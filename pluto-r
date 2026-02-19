@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+read -p "Program name: " name
+git clone "https://www.github.com/user-firepluto/$name" /home/$USER/.pluto-temp/"$name"
+cd /home/$USER/.pluto-temp/"$name" && chmod +x remove.sh && ./remove.sh
+sudo rm -rf /home/$USER/.pluto-temp/"$name"
+echo "Removal of the program ($name) is sucefully completed"
