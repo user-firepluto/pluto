@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+if [ $# -eq 0 ]; then
+	echo "Use: $0 [command] [package]"
+	echo "pluto help - for more information"
+	exit 1
+else
+	command=$1
+	package=$2
+	if [ "$1" = "install" ]; then
+		git clone "https://www.github.com/user-firepluto/$package" /home/$USER/.pluto-temp/"$package"
+		cd /home/$USER/.pluto-temp/"$package" && chmod +x installer.sh && ./installer.sh
+		rm -rf /home/$USER/.pluto-temp/"$package"
+		echo "Instalation of package ($package) is successfully completed"
+	elif [ "$1" = "remove" ]; then
+		git clone "https://www.github.com/user-firepluto/$package" /home/$USER/.pluto-temp/"$package"
+		cd /home/$USER/.pluto-temp/"$package" && chmod +x remove.sh && ./remove.sh
+		rm -rf /home/$USER/.pluto-temp/"$package"
+		echo "Removal of package ($package) is successfully completed"
+	elif [ "$1" = "help" ]; then
+		echo "pluto [command] [package]"
+		echo "pluto install [package] - install a package from user-firepluto github repository"
+		echo "pluto remove [package] - remove a previous installed package from your machine"
+		echo "pluto help - help with commands"
+	fi
+fi
