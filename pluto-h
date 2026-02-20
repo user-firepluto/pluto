@@ -1,3 +1,0 @@
-#!/bin/bash
-echo "pluto-i - Install a program"
-echo "pluto-r - Remove a installed program"
